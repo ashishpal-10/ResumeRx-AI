@@ -87,7 +87,7 @@ const ReportDetail = ({ reportId }) => {
       <div className="min-h-screen bg-[#0d1322] text-[#dde2f8]">
         <Sidebar activePage="Analytics" />
 
-        <main className="flex min-h-screen items-center justify-center md:ml-64">
+        <main className="flex min-h-screen items-center justify-center pb-16 pt-16 md:ml-64">
           <div className="flex flex-col items-center">
             <Loader2
               size={45}
@@ -108,7 +108,7 @@ const ReportDetail = ({ reportId }) => {
       <div className="min-h-screen bg-[#0d1322] text-[#dde2f8]">
         <Sidebar activePage="Analytics" />
 
-        <main className="flex min-h-screen items-center justify-center md:ml-64">
+        <main className="flex min-h-screen items-center justify-center pb-16 pt-16 md:ml-64">
           <div className="max-w-md rounded-2xl border border-red-500/30 bg-red-500/10 p-8 text-center">
             <h2 className="text-xl font-semibold text-red-300">
               Failed to Load Report
@@ -203,7 +203,7 @@ ${report.resumeRoast || "No roast available"}
       <Sidebar activePage="Analytics" />
 
       {/* Main Content */}
-      <main className="min-h-screen md:ml-64">
+      <main className="min-h-screen pt-14 md:ml-64">
         <div className="p-4 text-[#dde2f8] md:p-8 lg:p-12">
 
           {/* Header */}
@@ -780,7 +780,7 @@ ${report.resumeRoast || "No roast available"}
       <Sidebar activePage="Analytics" />
 
       {/* Main Content */}
-      <main className="min-h-screen md:ml-64">
+      <main className="min-h-screen pt-14 md:ml-64">
         <div className="p-4 text-[#dde2f8] md:p-8 lg:p-12">
 
           {/* Header */}

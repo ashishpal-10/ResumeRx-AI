@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative flex flex-col items-center py-10 text-center md:py-16">
 
@@ -27,12 +32,15 @@ const Hero = () => {
 
       <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row">
 
-        <button className="flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#8083ff] to-[#571bc1] px-8 font-medium text-[#0d0096] transition hover:brightness-110 sm:w-auto">
+        <button
+          onClick={() => navigate("/signup")}
+          className="flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#8083ff] to-[#571bc1] px-8 font-semibold text-white transition hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_15px_rgba(128,131,255,0.35)] sm:w-auto"
+        >
           Analyze Resume
-          <span>→</span>
+          <ArrowRight size={18} />
         </button>
 
-        <button className="flex h-12 w-full items-center justify-center rounded-lg border border-[#464554] px-8 font-medium text-[#dde2f8] transition hover:border-[#c0c1ff]/50 hover:bg-[#191f2f] sm:w-auto">
+        <button className="flex h-12 w-full items-center justify-center rounded-lg border border-[#464554] px-8 font-semibold text-[#dde2f8] transition hover:border-[#c0c1ff]/50 hover:bg-[#191f2f] sm:w-auto">
           View Demo
         </button>
 

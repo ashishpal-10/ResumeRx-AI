@@ -204,7 +204,7 @@ const UploadPage = () => {
       <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(99,102,241,0.15),transparent_70%)]" />
 
       {/* Main Content */}
-      <main className="relative z-10 ml-0 flex min-h-screen flex-col items-center justify-center px-4 py-10 md:ml-64 md:px-12">
+      <main className="relative z-10 ml-0 flex min-h-screen flex-col items-center justify-center px-4 pb-16 pt-16 md:ml-64 md:px-12 md:py-10">
         <div className="flex w-full max-w-3xl flex-col items-center">
 
           {/* Heading */}

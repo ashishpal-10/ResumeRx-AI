@@ -1,19 +1,26 @@
+import {
+  Building2,
+  Cloud,
+  BarChart3,
+  Rocket,
+} from "lucide-react";
+
 const Trusted = () => {
   const companies = [
     {
-      icon: "🏢",
+      Icon: Building2,
       name: "TechCorp",
     },
     {
-      icon: "☁️",
+      Icon: Cloud,
       name: "CloudSync",
     },
     {
-      icon: "📊",
+      Icon: BarChart3,
       name: "DataFlow",
     },
     {
-      icon: "🚀",
+      Icon: Rocket,
       name: "LaunchPad",
     },
   ];
@@ -27,13 +34,13 @@ const Trusted = () => {
 
       <div className="flex flex-wrap justify-center gap-10 opacity-60 grayscale transition duration-500 hover:grayscale-0 md:gap-20">
 
-        {companies.map((company) => (
+        {companies.map(({ Icon, name }) => (
           <div
-            key={company.name}
+            key={name}
             className="flex items-center gap-2 text-xl font-bold text-[#c7c4d7]"
           >
-            <span>{company.icon}</span>
-            {company.name}
+            <Icon size={22} className="text-[#c0c1ff]" />
+            {name}
           </div>
         ))}
 

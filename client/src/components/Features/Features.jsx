@@ -1,3 +1,10 @@
+import {
+  FileText,
+  Target,
+  Flame,
+  TrendingUp,
+} from "lucide-react";
+
 const Features = () => {
   return (
     <section id="features" className="mt-10 py-10">
@@ -16,12 +23,12 @@ const Features = () => {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
 
         {/* ATS Score */}
-        <div className="glass-panel group relative overflow-hidden rounded-xl p-6 md:col-span-2">
+        <div className="glass-panel group relative overflow-hidden rounded-xl p-6 transition duration-300 hover:-translate-y-1 md:col-span-2">
 
           <div className="relative z-10">
 
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-[#464554]/30 bg-[#242a3a] text-2xl">
-              📄
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-[#464554]/30 bg-[#242a3a] text-[#c0c1ff]">
+              <FileText size={24} />
             </div>
 
             <h3 className="mb-2 text-2xl font-semibold">
@@ -53,10 +60,10 @@ const Features = () => {
         </div>
 
         {/* Skill Gap */}
-        <div className="glass-panel rounded-xl p-6">
+        <div className="glass-panel rounded-xl p-6 transition duration-300 hover:-translate-y-1">
 
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-[#464554]/30 bg-[#242a3a] text-2xl">
-            🎯
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-[#464554]/30 bg-[#242a3a] text-[#ffb783]">
+            <Target size={24} />
           </div>
 
           <h3 className="mb-2 text-2xl font-semibold">
@@ -71,10 +78,10 @@ const Features = () => {
         </div>
 
         {/* Resume Roast */}
-        <div className="glass-panel rounded-xl p-6">
+        <div className="glass-panel rounded-xl p-6 transition duration-300 hover:-translate-y-1">
 
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-[#464554]/30 bg-[#242a3a] text-2xl">
-            🔥
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-[#464554]/30 bg-[#242a3a] text-[#ffb4ab]">
+            <Flame size={24} />
           </div>
 
           <h3 className="mb-2 text-2xl font-semibold">
@@ -89,12 +96,12 @@ const Features = () => {
         </div>
 
         {/* Deep Insights */}
-        <div className="glass-panel flex flex-col items-center gap-6 rounded-xl p-6 sm:flex-row md:col-span-2">
+        <div className="glass-panel flex flex-col items-center gap-6 rounded-xl p-6 transition duration-300 hover:-translate-y-1 sm:flex-row md:col-span-2">
 
           <div className="flex-1">
 
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-[#464554]/30 bg-[#242a3a] text-2xl">
-              📈
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-[#464554]/30 bg-[#242a3a] text-[#d0bcff]">
+              <TrendingUp size={24} />
             </div>
 
             <h3 className="mb-2 text-2xl font-semibold">
@@ -109,8 +116,8 @@ const Features = () => {
           </div>
 
           <div className="h-32 w-full rounded-lg border border-[#464554]/20 bg-[#080e1d] sm:w-1/3">
-            <div className="flex h-full items-center justify-center text-5xl opacity-70">
-              📊
+            <div className="flex h-full items-center justify-center text-[#c0c1ff] opacity-70">
+              <TrendingUp size={48} />
             </div>
           </div>
 
