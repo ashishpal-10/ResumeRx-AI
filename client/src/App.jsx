@@ -6,7 +6,6 @@ import Signup from "./pages/Signup/Signup.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import UploadPage from "./pages/Upload/Upload.jsx";
 import Report from "./pages/Analytics/Analytics.jsx";
-import History from "./pages/History/History.jsx";
 
 const App = () => {
   return (
@@ -16,9 +15,9 @@ const App = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/upload" element={<UploadPage />} />
-      <Route path="/history" element={<History />} />
 
       {/* Selected report */}
+      <Route path="/analytics" element={<Report />} />
       <Route path="/analytics/:reportId" element={<Report />} />
     </Routes>
   );

@@ -1,10 +1,8 @@
-import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import {
   LayoutDashboard,
   CloudUpload,
-  History,
   BarChart3,
   Settings,
   CircleHelp,
@@ -28,13 +26,8 @@ const Sidebar = () => {
       icon: CloudUpload,
     },
     {
-      name: "History",
-      path: "/history",
-      icon: History,
-    },
-    {
       name: "Analytics",
-      path: "/report",
+      path: "/analytics",
       icon: BarChart3,
     },
     {

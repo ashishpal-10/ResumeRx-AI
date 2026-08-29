@@ -6,7 +6,7 @@ export const uploadResume = async (file) => {
   formData.append("resume", file);
 
   const response = await api.post(
-    "/api/reports/",
+    "/resume/upload",
     formData
   );
 

@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import Sidebar from "../../components/Dashboard/Sidebar";
 import StatsCards from "../../components/Dashboard/StatsCards";
 import RecentActivity from "../../components/Dashboard/RecentActivity";
@@ -5,6 +7,8 @@ import QuickScan from "../../components/Dashboard/QuickScan";
 import ScoreTrend from "../../components/Dashboard/ScoreTrend";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-[#0d1322] text-[#dde2f8]">
       <Sidebar />
@@ -27,7 +31,10 @@ const Dashboard = () => {
             </p>
           </div>
 
-          <button className="flex h-12 items-center gap-2 rounded-lg bg-gradient-to-r from-[#8083ff] to-[#571bc1] px-6 font-medium text-[#0d0096] transition hover:brightness-110 hover:shadow-[0_0_15px_rgba(128,131,255,0.3)]">
+          <button
+            onClick={() => navigate("/upload")}
+            className="flex h-12 items-center gap-2 rounded-lg bg-gradient-to-r from-[#8083ff] to-[#571bc1] px-6 font-medium text-[#0d0096] transition hover:brightness-110 hover:shadow-[0_0_15px_rgba(128,131,255,0.3)]"
+          >
             <span>+</span>
             New Analysis
           </button>

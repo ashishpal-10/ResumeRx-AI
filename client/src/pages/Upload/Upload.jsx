@@ -162,13 +162,15 @@ const UploadPage = () => {
         JSON.stringify(analysisData.report)
       );
 
+      const reportId = analysisData.report?._id;
+
+      if (!reportId) {
+        throw new Error("Report ID was not received.");
+      }
+
       // Navigate to Report Page
       setTimeout(() => {
-        navigate("/report", {
-          state: {
-            report: analysisData.report,
-          },
-        });
+        navigate(`/analytics/${reportId}`);
       }, 500);
     } catch (error) {
       console.error("Analysis Error:", error);
