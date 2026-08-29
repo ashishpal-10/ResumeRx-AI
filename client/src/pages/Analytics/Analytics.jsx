@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   RefreshCw,
@@ -40,9 +40,9 @@ const Analytics = () => {
 
         const response = await getReportById(reportId);
 
-        console.log("Real Report Data:", response.data);
+        console.log("Real Report Data:", response.report);
 
-        setReport(response.data.report);
+        setReport(response.report);
       } catch (error) {
         console.error("Fetch Report Error:", error);
 
@@ -138,6 +138,8 @@ const Analytics = () => {
 
   const weaknesses = report.weaknesses || [];
 
+  const resumeName = report.resume?.originalName || "Resume";
+
   return (
     <div className="min-h-screen bg-[#0d1322]">
       {/* Sidebar */}
@@ -155,7 +157,7 @@ const Analytics = () => {
               </h1>
 
               <p className="mt-2 text-sm text-[#c7c4d7] md:text-base">
-                Resume ID: {report.resume}
+                {resumeName}
               </p>
             </div>
 
