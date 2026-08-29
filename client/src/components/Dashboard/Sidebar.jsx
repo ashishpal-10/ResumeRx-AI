@@ -130,7 +130,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Mobile Top Bar */}
-      <div className="fixed left-0 right-0 top-0 z-40 flex h-14 items-center justify-between border-b border-[#2f3445]/60 bg-[#0d1322]/90 px-4 backdrop-blur-xl md:hidden">
+      <div className="fixed left-0 right-0 top-0 z-40 flex h-18 items-center justify-between border-b border-[#2f3445]/60 bg-[#0d1322]/90 px-4 backdrop-blur-xl md:hidden">
         <div className="flex items-center gap-2.5">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#2b3447]">
             <Sparkles size={16} className="text-[#b9b8ff]" />
@@ -161,8 +161,8 @@ const Sidebar = () => {
 
       {/* Mobile Drawer */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-white/10 bg-[#1b2230] p-3 text-white transition-transform duration-300 md:hidden ${
-          open ? "translate-x-0" : "-translate-x-full"
+        className={`fixed inset-y-0  right-0 z-50 flex w-64 flex-col border-r border-white/10 bg-[#1b2230] p-3 text-white transition-transform duration-300 md:hidden ${
+          open ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <button

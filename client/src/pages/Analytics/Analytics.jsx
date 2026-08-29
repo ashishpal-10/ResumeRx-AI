@@ -399,10 +399,9 @@ ${report.resumeRoast || "No roast available"}
 
           </div>
 
-          {/* AI Roast and Missing Skills */}
           <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-12">
 
-            {/* AI Resume Roast */}
+  
             <div className="glass-panel relative overflow-hidden rounded-2xl border border-indigo-500/40 p-6 md:col-span-5">
 
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent" />
@@ -430,7 +429,7 @@ ${report.resumeRoast || "No roast available"}
 
             </div>
 
-            {/* Missing Skills */}
+          
             <div className="glass-panel rounded-2xl p-6 md:col-span-7">
 
               <div className="mb-4 flex items-center gap-2">
@@ -473,7 +472,7 @@ ${report.resumeRoast || "No roast available"}
 
           </div>
 
-          {/* Strengths */}
+       
           <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
 
             <div className="glass-panel rounded-2xl p-6">
@@ -523,7 +522,6 @@ ${report.resumeRoast || "No roast available"}
 
             </div>
 
-            {/* Action Checklist */}
             <div className="glass-panel rounded-2xl p-6">
 
               <h3 className="mb-5 flex items-center gap-2 text-xl font-semibold">
@@ -583,7 +581,7 @@ ${report.resumeRoast || "No roast available"}
 
           </div>
 
-          {/* Weaknesses */}
+   
           <div className="glass-panel rounded-2xl border border-red-400/20 p-6">
 
             <h3 className="mb-5 text-xl font-semibold text-[#ffb4ab]">
@@ -628,10 +626,7 @@ ${report.resumeRoast || "No roast available"}
   );
 };
 
-// ==============================
-// REPORT LIST VIEW
-// (/analytics)
-// ==============================
+
 
 const ReportList = ({ navigate }) => {
   const [search, setSearch] = useState("");
