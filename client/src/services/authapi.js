@@ -2,7 +2,7 @@ import api from "./api";
 
 export const registerUser = async (userData) => {
   const response = await api.post(
-    "/auth/register",
+    "/auth/signup",
     userData
   );
 

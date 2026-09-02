@@ -1,6 +1,16 @@
 import { useEffect, useState } from "react";
 
 import {
+  Document,
+  Packer,
+  Paragraph,
+  TextRun,
+  HeadingLevel,
+  AlignmentType,
+  BorderStyle,
+} from "docx";
+
+import {
   Search,
   FileText,
   Eye,
@@ -38,6 +48,152 @@ const Analytics = () => {
   }
 
   return <ReportList navigate={navigate} />;
+};
+
+// ==============================
+// DOCX REPORT GENERATOR (SHARED)
+// ==============================
+
+const generateReportDocx = (report, resumeName) => {
+  const bullet = (text) =>
+    new Paragraph({
+      children: [new TextRun({ text, size: 24 })],
+      bullet: { level: 0 },
+      spacing: { after: 80 },
+    });
+
+  const sectionTitle = (text) =>
+    new Paragraph({
+      children: [
+        new TextRun({
+          text,
+          bold: true,
+          size: 28,
+          color: "4338CA",
+        }),
+      ],
+      heading: HeadingLevel.HEADING_2,
+      spacing: { before: 320, after: 120 },
+    });
+
+  const body = (text) =>
+    new Paragraph({
+      children: [new TextRun({ text, size: 24 })],
+      spacing: { after: 120 },
+    });
+
+  const doc = new Document({
+    styles: {
+      default: {
+        document: {
+          run: { font: "Calibri", size: 24 },
+        },
+      },
+    },
+    sections: [
+      {
+        properties: {},
+        children: [
+          new Paragraph({
+            alignment: AlignmentType.CENTER,
+            children: [
+              new TextRun({
+                text: "AI Resume Analysis Report",
+                bold: true,
+                size: 44,
+                color: "1E1B4B",
+              }),
+            ],
+            spacing: { after: 200 },
+          }),
+
+          new Paragraph({
+            alignment: AlignmentType.CENTER,
+            children: [
+              new TextRun({
+                text: resumeName || "Resume Analysis",
+                size: 26,
+                color: "6B7280",
+              }),
+            ],
+            spacing: { after: 400 },
+          }),
+
+          new Paragraph({
+            alignment: AlignmentType.CENTER,
+            children: [
+              new TextRun({
+                text: `ATS Score: ${report.atsScore}%`,
+                bold: true,
+                size: 34,
+                color: "4F46E5",
+              }),
+            ],
+            spacing: { after: 200 },
+          }),
+
+          new Paragraph({
+            border: {
+              bottom: {
+                color: "C7CBE0",
+                space: 1,
+                style: BorderStyle.SINGLE,
+                size: 6,
+              },
+            },
+            children: [],
+            spacing: { after: 200 },
+          }),
+
+          sectionTitle("Summary"),
+          body(report.summary || "No summary available"),
+
+          sectionTitle("Strengths"),
+          ...(report.strengths && report.strengths.length
+            ? report.strengths.map(bullet)
+            : [body("No strengths available")]),
+
+          sectionTitle("Weaknesses"),
+          ...(report.weaknesses && report.weaknesses.length
+            ? report.weaknesses.map(bullet)
+            : [body("No weaknesses available")]),
+
+          sectionTitle("Missing Skills"),
+          ...(report.missingSkills && report.missingSkills.length
+            ? report.missingSkills.map(bullet)
+            : [body("No missing skills available")]),
+
+          sectionTitle("Suggestions"),
+          ...(report.suggestions && report.suggestions.length
+            ? report.suggestions.map(bullet)
+            : [body("No suggestions available")]),
+
+          sectionTitle("Resume Roast"),
+          body(report.resumeRoast || "No roast available"),
+        ],
+      },
+    ],
+  });
+
+  return doc;
+};
+
+const downloadReportDocx = async (report, resumeName) => {
+  const doc = generateReportDocx(report, resumeName);
+
+  const blob = await Packer.toBlob(doc);
+
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+
+  link.href = url;
+
+  link.download = "resume-analysis-report.docx";
+
+  link.click();
+
+  URL.revokeObjectURL(url);
 };
 
 // ==============================
@@ -156,45 +312,7 @@ const ReportDetail = ({ reportId }) => {
   const band = scoreBand(atsScore);
 
   const handleDownload = () => {
-    const content = `
-AI RESUME ANALYSIS REPORT
-
-ATS SCORE: ${atsScore}%
-
-RESUME: ${resumeName}
-
-SUMMARY:
-${report.summary || "No summary available"}
-
-STRENGTHS:
-${strengths.join("\n") || "No strengths available"}
-
-WEAKNESSES:
-${weaknesses.join("\n") || "No weaknesses available"}
-
-MISSING SKILLS:
-${missingSkills.join("\n") || "No missing skills available"}
-
-SUGGESTIONS:
-${suggestions.join("\n") || "No suggestions available"}
-
-RESUME ROAST:
-${report.resumeRoast || "No roast available"}
-`;
-
-    const blob = new Blob([content], { type: "text/plain" });
-
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement("a");
-
-    link.href = url;
-
-    link.download = "resume-analysis-report.txt";
-
-    link.click();
-
-    URL.revokeObjectURL(url);
+    downloadReportDocx(report, resumeName);
   };
 
   return (
@@ -730,43 +848,12 @@ const ReportList = ({ navigate }) => {
   };
 
   const handleDownload = (report) => {
-    const content = `
-AI RESUME ROAST REPORT
+    const resumeName =
+      report.resume?.originalName ||
+      report.resumeName ||
+      "Resume";
 
-ATS SCORE: ${report.atsScore}%
-
-SUMMARY:
-${report.summary || "No summary available"}
-
-STRENGTHS:
-${report.strengths?.join("\n") || "No strengths available"}
-
-WEAKNESSES:
-${report.weaknesses?.join("\n") || "No weaknesses available"}
-
-MISSING SKILLS:
-${report.missingSkills?.join("\n") || "No missing skills available"}
-
-SUGGESTIONS:
-${report.suggestions?.join("\n") || "No suggestions available"}
-
-RESUME ROAST:
-${report.resumeRoast || "No roast available"}
-`;
-
-    const blob = new Blob([content], { type: "text/plain" });
-
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement("a");
-
-    link.href = url;
-
-    link.download = "resume-analysis-report.txt";
-
-    link.click();
-
-    URL.revokeObjectURL(url);
+    downloadReportDocx(report, resumeName);
   };
 
   return (
