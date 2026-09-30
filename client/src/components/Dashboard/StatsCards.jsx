@@ -21,12 +21,6 @@ const StatsCards = () => {
       progress: true,
     },
     {
-      title: "Resume Health",
-      value: "Strong",
-      subtitle: "Top 15%",
-      icon: HeartPulse,
-    },
-    {
       title: "Recent Upload",
       value: "Product_Manager_v3.pdf",
       subtitle: "2 hours ago",
@@ -36,7 +30,7 @@ const StatsCards = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {stats.map((stat) => {
         const Icon = stat.icon;
 

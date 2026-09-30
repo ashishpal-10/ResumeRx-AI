@@ -35,7 +35,7 @@ const RecentActivity = () => {
   };
 
   return (
-    <section className="glass-panel overflow-hidden rounded-xl p-6">
+    <section className="glass-panel overflow-hidden rounded-xl p-5">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-xl font-semibold">
           Recent Activity

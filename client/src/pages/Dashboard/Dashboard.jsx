@@ -44,13 +44,13 @@ const Dashboard = () => {
           <StatsCards />
 
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-12">
-            <div className="md:col-span-8">
+            <div className="md:col-span-7">
               <RecentActivity />
             </div>
 
-            <div className="flex flex-col gap-6 md:col-span-4">
+            <div className="flex flex-col gap-6 md:col-span-5">
               <QuickScan />
-              <ScoreTrend />
+            
             </div>
           </div>
         </div>
