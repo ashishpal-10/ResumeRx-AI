@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   CheckCircle2,
@@ -11,6 +11,7 @@ const Image = "/screen.png";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,8 +42,10 @@ const Login = () => {
         );
       }
 
-      // Redirect to dashboard
-      navigate("/dashboard");
+      // Redirect to the page they tried to open, else the dashboard
+      navigate(location.state?.from || "/dashboard", {
+        replace: true,
+      });
     } catch (error) {
       setError(
         error.response?.data?.message ||
